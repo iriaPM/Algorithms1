@@ -1,0 +1,16 @@
+________________________________________
+    while low <= high
+
+        middle = (low + high)/2
+
+        if searchKey = A[middle]
+            return middle
+
+        else if searchKey < A[middle]
+            high = middle - 1
+
+        else if searchKey > A[middle]
+            low = middle + 1
+________________________________________
+
+

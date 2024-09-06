@@ -1,0 +1,106 @@
+algorithm InitializeList(Head)
+Head := NULL // an empty list
+end InitializeList
+_______________________________
+
+bool EmptyList (Head) // returns true/false
+If Head = NULL then
+List_is_empty = true
+else
+List_is_empty = false
+end if
+return List_is_empty
+end EmptyList
+____________________________________________________
+
+
+Algorithm PrintList(Head)
+NODEPTR = Head
+while NODEPTR not = NULL
+Print NODEPTRDATA // print data
+NODEPTR = NODEPTRNEXT // next node
+end while
+end PrintList
+
+
+___________________________________________________________________
+PRINTLIST (NODEPTR) // print list starting at NODEPTR
+If NODEPTR not NULL
+PRINT “Data is ”, NODEPTR->DATA
+// Recursive call to print the list starting at the next node.
+PRINTLIST (NODEPTR->NEXT)
+end if
+end PRINTLIST
+ To invoke this routine:PRINTLIST(Head)
+___________________________________________________________________
+
+Find position for a new node
+
+Algorithm FINDPOS(Head, NEWPTR)
+PRIOR = NULL
+SUCCESSOR = Head
+FOUND = false // boolean, true when position is found
+While SUCCESSOR not = NULL and FOUND = false
+If SUCCESSORDATA < NEWPTRDATA then
+PRIOR = SUCCESSOR
+SUCCESSOR = SUCCESSORNEXT
+else
+FOUND = true
+end if
+end-while
+end procedure
+_______________________________
+AddNode
+
+Algorithm AddNode(NEWPTR)
+NEWPTRNEXT = SUCCESSOR
+If SUCCESSOR = Head
+Head = NEWPTR // new node is at head
+else
+PRIORNEXT = NEWPTR
+// new node is after PRIOR Node
+end if
+end AddNode
+_______________________________
+
+FindNode in a sorted list
+
+Algorithm FindNode(X, PRIOR, FOUND)
+PRIOR = NULL
+NODEPTR = Head
+FOUND = false
+while NODEPTR<>NULL and NODEPTRDATA < X
+PRIOR = NODEPTR
+NODEPTR = NODEPTRNEXT
+end while
+if NODEPTRDATA = X
+FOUND = true
+end if
+end FindNode
+
+_______________________________
+
+Delete node NODE (pointer NODEPTR) from the list
+
+Algorithm DeleteNode(NODEPTR, PRIOR)
+If NODEPTR = Head then
+Head = NODEPTRNEXT
+else
+PRIORNEXT = NODEPTRNEXT
+end if
+//Delete memory occupied by NODE
+end DeleteNode
+_______________________________
+
+Implementation- C
+
+struct listNode { // self-referential structure
+int data;
+struct listNode *nextPtr;
+};
+ nextPtr is declared as a pointer to a listNode.
+ The "*" means that nextPtr is a pointer variable.
+ the node consists of:
+ (i) the data,
+ (ii) a pointer to a node of the same type.
+ In C the node is implemented as a struct.

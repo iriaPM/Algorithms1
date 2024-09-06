@@ -1,0 +1,24 @@
+max and min in an unordered array 
+
+start program 
+
+ read A 
+ length = len(A)
+ MAX = A[0]
+ i=1
+
+while i< length
+    if ( max < A[i])
+        
+        max = A[i]
+        print A[i]
+    
+    end if 
+    if (min > A[i])
+        {
+            min = A[i];
+        }
+    i++
+end while
+
+print max 
